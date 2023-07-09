@@ -13,9 +13,12 @@ const Header = () => {
         <nav className="md:ml-auto md:mr-auto flex flex-wrap items-center text-base justify-center space-x-10">
           <Link href="/">AtProについて</Link>
         </nav>
-        <button className="inline-flex items-center text-[#303b49] bg-gray-100 border-0 py-1 px-3 focus:outline-none hover:bg-gray-200 rounded text-base mt-4 md:mt-0">
+        <Link
+          href="/login"
+          className="inline-flex items-center text-[#303b49] bg-gray-100 border-0 py-1 px-3 focus:outline-none hover:bg-gray-200 rounded text-base mt-4 md:mt-0"
+        >
           Login
-        </button>
+        </Link>
       </div>
     </header>
   );
