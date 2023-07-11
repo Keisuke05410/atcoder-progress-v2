@@ -26,7 +26,7 @@ const Signup = () => {
       .then((userCredential) => {
         // Signed in
         const user = userCredential.user;
-        router.push("/");
+        router.push("/dashbord");
         // ...
       })
       .catch((error) => {
