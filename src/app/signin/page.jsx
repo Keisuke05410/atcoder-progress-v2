@@ -24,8 +24,23 @@ const Login = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    await signInWithEmailAndPassword(auth, email, password);
-    router.push("/");
+    signInWithEmailAndPassword(auth, email, password)
+      .then((userCredential) => {
+        // Signed in
+        const user = userCredential.user;
+        router.push("/");
+        // ...
+      })
+      .catch((error) => {
+        const errorCode = error.code;
+        if (errorCode === "auth/wrong-password") {
+          alert("パスワードが違います");
+        } else if (errorCode === "auth/user-not-found") {
+          alert("ユーザーが見つかりません");
+        } else {
+          alert("サインインに失敗しました");
+        }
+      });
   };
   return (
     <main className="w-full max-w-md mx-auto p-6">

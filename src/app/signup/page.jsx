@@ -22,8 +22,25 @@ const Signup = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    await createUserWithEmailAndPassword(auth, email, password);
-    router.push("/");
+    createUserWithEmailAndPassword(auth, email, password)
+      .then((userCredential) => {
+        // Signed in
+        const user = userCredential.user;
+        router.push("/");
+        // ...
+      })
+      .catch((error) => {
+        const errorCode = error.code;
+        if (errorCode === "auth/email-already-in-use") {
+          alert("このメールアドレスは既に登録されています");
+        } else if (errorCode === "auth/invalid-email") {
+          alert("メールアドレスが不正です");
+        } else if (errorCode === "auth/weak-password") {
+          alert("パスワードが弱すぎます");
+        } else {
+          alert("サインアップに失敗しました");
+        }
+      });
   };
 
   return (
