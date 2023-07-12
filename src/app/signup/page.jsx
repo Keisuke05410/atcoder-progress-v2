@@ -39,6 +39,7 @@ const Signup = () => {
           alert("パスワードが弱すぎます");
         } else {
           alert("サインアップに失敗しました");
+          router.push("/signup");
         }
       });
   };

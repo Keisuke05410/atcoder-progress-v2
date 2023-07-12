@@ -41,6 +41,7 @@ const Login = () => {
         } else {
           alert("サインインに失敗しました");
         }
+        router.push("/signin");
       });
   };
 
@@ -59,6 +60,7 @@ const Login = () => {
         } else {
           alert("サインインに失敗しました");
         }
+        router.push("/signin");
       });
   };
 

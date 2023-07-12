@@ -21,11 +21,23 @@ const Specific = () => {
           <span className="ml-3 text-xl">AtPro</span>
         </a>
         <nav className="md:ml-auto md:mr-auto flex flex-wrap items-center text-base justify-center space-x-20">
-          <Link href="/" className="font-bold">
-            AtProについて
+          <Link
+            href="/dashbord"
+            className="font-bold hover:underline hover:font-extrabold"
+          >
+            DashBord
           </Link>
-          <Link href="/" className="font-bold">
-            AtProの使い方
+          <Link
+            href="/dashbord"
+            className="font-bold hover:underline hover:font-extrabold"
+          >
+            List
+          </Link>
+          <Link
+            href="/"
+            className="font-bold hover:underline hover:font-extrabold"
+          >
+            TopPage
           </Link>
         </nav>
         <button

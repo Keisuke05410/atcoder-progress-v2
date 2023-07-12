@@ -18,7 +18,7 @@ const Header = () => {
     await router.push("/");
   };
 
-  return <>{user == null ? <General /> : <Specific />}</>;
+  return <>{user === null ? <General /> : <Specific />}</>;
 };
 
 export default Header;
