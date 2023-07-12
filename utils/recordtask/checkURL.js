@@ -25,7 +25,12 @@ const stringToNumber = (str) => {
 };
 
 export const CheckURL = (url) => {
-  const urlObj = new URL(url);
+  try {
+    const urlObj = new URL(url);
+  } catch (e) {
+    return { status: "not valid URL" };
+  }
+
   const hostname = urlObj.hostname;
 
   if (hostname !== "atcoder.jp") {
