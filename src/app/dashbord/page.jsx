@@ -15,7 +15,6 @@ const Dashbord = () => {
   return (
     <div className="px-10 pt-10">
       <RecordInput taskInfo={taskInfo} setTaskInfo={setTaskInfo} />
-      {taskInfo.status ? <SetDetail /> : <div>none</div>}
     </div>
   );
 };

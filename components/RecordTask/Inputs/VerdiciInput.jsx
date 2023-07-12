@@ -14,6 +14,7 @@ export const VerdiciInput = (props) => {
           name="colored-radio"
           onChange={(e) => setVerdici(e.target.value)}
           className="w-4 h-4"
+          required
         />
         <label for="red-radio" className="ml-2"></label>
         <BiCircle className="text-blue-500 text-xl" />

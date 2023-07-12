@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { VerdiciInput } from "./Inputs/VerdiciInput";
 import { URLInput } from "./Inputs/URLInput";
 import { CodeInput } from "./Inputs/CodeInput";
+import SubmitButton from "./Inputs/SubmitButton";
 
 export const RecordInput = (props) => {
   const [url, setUrl] = useState("");
@@ -14,6 +15,7 @@ export const RecordInput = (props) => {
         <URLInput url={url} setUrl={setUrl} />
         <VerdiciInput verdici={verdici} setVerdici={setVerdici} />
         <CodeInput code={code} setCode={setCode} />
+        <SubmitButton />
       </form>
     </>
   );
