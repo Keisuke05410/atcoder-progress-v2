@@ -20,7 +20,7 @@ export function AuthProvider({ children }) {
     const unsubscribe = auth.onAuthStateChanged((user) => {
       setUser(user);
     });
-    return () => unsubscribe();
+    return unsubscribe;
   }, []);
 
   return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;

@@ -1,7 +1,11 @@
+"use client";
+
+import { useAccessLimit } from "../../../utils/auth/accessLimit";
 import React from "react";
 
 const Dashbord = () => {
-  return <div>Dashbord</div>;
+  useAccessLimit();
+  return <div>ログインできてるよ</div>;
 };
 
 export default Dashbord;

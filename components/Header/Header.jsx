@@ -1,6 +1,6 @@
 "use client";
 
-import { useAuthContext } from "@/context/state";
+import { useAuthContext } from "../../utils/auth/state";
 import { signOut } from "firebase/auth";
 import Link from "next/link";
 import React from "react";
