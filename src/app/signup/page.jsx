@@ -43,6 +43,24 @@ const Signup = () => {
       });
   };
 
+  const handleGoogleLogin = async () => {
+    await signInWithPopup(auth, googleProvider)
+      .then((result) => {
+        const user = result.user;
+        router.push("/dashbord");
+      })
+      .catch((error) => {
+        // Handle Errors here.
+        const errorCode = error.code;
+        const errorMessage = error.message;
+        if (errorCode === "auth/account-exists-with-different-credential") {
+          alert("既に登録されているメールアドレスです");
+        } else {
+          alert("サインインに失敗しました");
+        }
+      });
+  };
+
   return (
     <main className="w-full max-w-md mx-auto p-6">
       <div className="mt-7 bg-white border border-gray-200 rounded-xl shadow-sm">
@@ -63,6 +81,7 @@ const Signup = () => {
           <div className="mt-5">
             <button
               type="button"
+              onClick={handleGoogleLogin}
               className="w-full py-3 px-4 inline-flex justify-center items-center gap-2 rounded-md border font-medium bg-white text-gray-700 shadow-sm align-middle hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-white focus:ring-blue-600 transition-all text-sm "
             >
               <svg
