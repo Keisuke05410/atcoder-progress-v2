@@ -5,6 +5,7 @@ export const URLInput = (props) => {
   const { taskInfo, setTaskInfo } = props;
   const [url, setUrl] = useState("");
   const handleSubmit = () => {
+    event.preventDefault();
     const res = CheckURL(url);
     setTaskInfo(res);
   };

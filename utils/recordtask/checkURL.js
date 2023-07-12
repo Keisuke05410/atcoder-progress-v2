@@ -25,23 +25,19 @@ const stringToNumber = (str) => {
 };
 
 export const CheckURL = (url) => {
-  try {
-    const urlObj = new URL(url);
-  } catch (e) {
-    return { status: "not valid URL" };
-  }
+  const urlObj = new URL(url);
 
   const hostname = urlObj.hostname;
 
   if (hostname !== "atcoder.jp") {
-    return { status: "not atcoder" };
+    return { status: false, message: "not atcoder" };
   }
 
   const urlPath = urlObj.pathname;
   const urlPathArr = urlPath.split("/").slice(1);
 
   if (!urlPathArr[1]) {
-    return { status: "not valid URL" };
+    return { status: false, message: "not valid URL" };
   }
   const contestid = urlPathArr[1];
   const contestAlphabet = contestid.slice(0, 3);
@@ -52,13 +48,23 @@ export const CheckURL = (url) => {
     : undefined;
 
   if (urlPathArr[0] !== "contests" || urlPathArr.length !== 4) {
-    return { status: "not task page" };
+    return { status: false, message: "not task page" };
   }
 
   if (isRegularContest(contestAlphabet) === "regular") {
-    return { status: "regular", contestAlphabet, contestNumber, taskAlphabet };
+    return {
+      status: true,
+      type: "regular",
+      contestAlphabet,
+      contestNumber,
+      taskAlphabet,
+    };
   } else if (isRegularContest(contestAlphabet) === "typical") {
-    return { status: "typical", taskAlphabet: stringToNumber(taskAlphabet) };
+    return {
+      status: true,
+      type: "typical",
+      taskAlphabet: stringToNumber(taskAlphabet),
+    };
   }
-  return { status: "not regular nor typical contest" };
+  return { status: false, message: "not regular nor typical contest" };
 };

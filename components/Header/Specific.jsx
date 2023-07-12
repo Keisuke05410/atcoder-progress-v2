@@ -41,7 +41,7 @@ const Specific = () => {
           </Link>
         </nav>
         <button
-          onDoubleClick={handleSignOut}
+          onClick={handleSignOut}
           className="inline-flex items-center bg-primary-black text-primary-gray font-medium border-0 py-1 px-3 focus:outline-none hover:bg-opacity-80 rounded text-base mr-3 mt-4 md:mt-0 "
         >
           Sign out
