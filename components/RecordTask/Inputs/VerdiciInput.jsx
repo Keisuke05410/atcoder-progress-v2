@@ -16,7 +16,7 @@ export const VerdiciInput = (props) => {
           className="w-4 h-4"
           required
         />
-        <label for="red-radio" className="ml-2"></label>
+        <label htmlFor="red-radio" className="ml-2"></label>
         <BiCircle className="text-blue-500 text-xl" />
       </div>
       <div className="flex items-center mr-4">
@@ -27,7 +27,7 @@ export const VerdiciInput = (props) => {
           onChange={(e) => setVerdici(e.target.value)}
           className="w-4 h-4"
         />
-        <label for="teal-radio" className="ml-2">
+        <label htmlFor="teal-radio" className="ml-2">
           <BsTriangle className="text-yellow-500 text-xl" />
         </label>
       </div>
@@ -39,7 +39,7 @@ export const VerdiciInput = (props) => {
           onChange={(e) => setVerdici(e.target.value)}
           className="w-4 h-4"
         />
-        <label for="yellow-radio" className="ml-2">
+        <label htmlFor="yellow-radio" className="ml-2">
           <RxCross1 className="text-red-400 text-xl" />
         </label>
       </div>

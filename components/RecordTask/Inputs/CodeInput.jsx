@@ -7,7 +7,7 @@ export const CodeInput = (props) => {
       <div className="flex flex-wrap w-full justify-center pt-10">
         <div className="relative mr-4 lg:w-full xl:w-1/2 w-2/4 md:w-full text-left pb-10">
           <label
-            for="code"
+            htmlFor="code"
             class="block mb-2 text-sm font-medium text-gray-900"
           >
             Your code

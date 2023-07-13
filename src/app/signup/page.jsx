@@ -2,10 +2,11 @@
 import Image from "next/image";
 import React, { useState } from "react";
 
-import { auth } from "../../../lib/firebase";
-import { createUserWithEmailAndPassword } from "firebase/auth";
+import { auth, db, googleProvider } from "../../../lib/firebase";
+import { createUserWithEmailAndPassword, signInWithPopup } from "firebase/auth";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
+import { doc, getDoc, setDoc } from "firebase/firestore";
 
 const Signup = () => {
   const [email, setEmail] = useState("");
@@ -21,45 +22,61 @@ const Signup = () => {
   };
 
   const handleSubmit = async (e) => {
-    e.preventDefault();
-    createUserWithEmailAndPassword(auth, email, password)
-      .then((userCredential) => {
-        // Signed in
-        const user = userCredential.user;
+    try {
+      e.preventDefault();
+      const result = await createUserWithEmailAndPassword(
+        auth,
+        email,
+        password
+      );
+      const user = result.user;
+      const docRef = doc(db, "users", user.uid);
+      const docSnap = await getDoc(docRef);
+      console.log(docSnap.exists());
+      if (!docSnap.exists()) {
+        await setDoc(doc(db, "users", user.uid), {
+          email: user.email,
+          uid: user.uid,
+        });
         router.push("/dashbord");
-        // ...
-      })
-      .catch((error) => {
-        const errorCode = error.code;
-        if (errorCode === "auth/email-already-in-use") {
-          alert("このメールアドレスは既に登録されています");
-        } else if (errorCode === "auth/invalid-email") {
-          alert("メールアドレスが不正です");
-        } else if (errorCode === "auth/weak-password") {
-          alert("パスワードが弱すぎます");
-        } else {
-          alert("サインアップに失敗しました");
-          router.push("/signup");
-        }
-      });
+      }
+    } catch (error) {
+      const errorCode = error.code;
+      if (errorCode === "auth/email-already-in-use") {
+        alert("このメールアドレスは既に登録されています");
+      } else if (errorCode === "auth/invalid-email") {
+        alert("メールアドレスが不正です");
+      } else if (errorCode === "auth/weak-password") {
+        alert("パスワードが弱すぎます");
+      } else {
+        alert("サインアップに失敗しました");
+      }
+      router.push("/signup");
+    }
   };
 
   const handleGoogleLogin = async () => {
-    await signInWithPopup(auth, googleProvider)
-      .then((result) => {
-        const user = result.user;
+    try {
+      const result = await signInWithPopup(auth, googleProvider);
+      const user = result.user;
+      const docRef = doc(db, "users", user.uid);
+      const docSnap = await getDoc(docRef);
+      if (!docSnap.exists()) {
+        await setDoc(doc(db, "users", user.uid), {
+          email: user.email,
+          uid: user.uid,
+        });
         router.push("/dashbord");
-      })
-      .catch((error) => {
-        // Handle Errors here.
-        const errorCode = error.code;
-        const errorMessage = error.message;
-        if (errorCode === "auth/account-exists-with-different-credential") {
-          alert("既に登録されているメールアドレスです");
-        } else {
-          alert("サインインに失敗しました");
-        }
-      });
+      }
+    } catch (error) {
+      const errorCode = error.code;
+      console.log(error);
+      if (errorCode === "auth/account-exists-with-different-credential") {
+        alert("既に登録されているメールアドレスです");
+      } else {
+        alert("サインインに失敗しました");
+      }
+    }
   };
 
   return (
