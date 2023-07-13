@@ -20,32 +20,31 @@ import { get, useForm } from "react-hook-form";
 import { useAuthContext } from "../../utils/auth/state";
 
 export const RecordInput = (props) => {
-  const DOCREF = doc(db, "tasks", "aaaaaaaaaaaaaaa");
-  getDoc(DOCREF).then((doc) => {
-    if (doc.exists()) {
-      console.log("Document data:", doc.data());
-    } else {
-      // doc.data() will be undefined in this case
-      console.log("No such document!");
-    }
-  });
-
   const { user } = useAuthContext();
   const {
     register,
     handleSubmit,
     formState: { errors },
   } = useForm();
+  // submitbuttonが押された時の処理
   const onSubmit = (data) => {
+    // urlからコンテスト情報を取得
     const urlInfo = CheckURL(data.url);
+    // userのuidを取得
     const uid = user.uid;
+    //  保存する処理
     try {
+      // urlが正しい場合
       if (urlInfo.status == true) {
+        // dataを作成
         const docRef = doc(db, "tasks", urlInfo.id + uid);
+        // 既存のデータベースに同じ問題がないかを確認
         getDoc(docRef).then((doc) => {
           if (doc.exists()) {
+            // 既存のデータベースに同じ問題がある場合
             alert("You have already submitted this task!");
           } else {
+            // 既存のデータベースに同じ問題がない場合
             setDoc(docRef, {
               uid: uid,
               url: data.url,
@@ -57,9 +56,11 @@ export const RecordInput = (props) => {
             });
           }
         });
+        // urlが正しくない場合
       } else {
         alert("Please enter a valid URL!");
       }
+      // 保存に失敗した場合
     } catch (e) {
       console.error("Error adding document: ", e);
     }

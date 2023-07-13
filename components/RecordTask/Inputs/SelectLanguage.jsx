@@ -4,7 +4,7 @@ const SelectLanguage = (props) => {
   const { register } = props;
 
   return (
-    <>
+    <div className="w-1/2 justify-center items-center flex">
       <select
         id="countries"
         {...register("language")}
@@ -15,7 +15,7 @@ const SelectLanguage = (props) => {
         <option value="JavaScript">JavaScript</option>
         <option value="C++">C++</option>
       </select>
-    </>
+    </div>
   );
 };
 
