@@ -3,11 +3,7 @@ import Image from "next/image";
 import React, { useState } from "react";
 
 import { auth, googleProvider } from "../../../lib/firebase";
-import {
-  createUserWithEmailAndPassword,
-  signInWithEmailAndPassword,
-  signInWithPopup,
-} from "firebase/auth";
+import { signInWithEmailAndPassword, signInWithPopup } from "firebase/auth";
 import { useRouter } from "next/navigation";
 
 const Login = () => {

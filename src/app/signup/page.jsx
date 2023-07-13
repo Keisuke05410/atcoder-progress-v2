@@ -35,6 +35,7 @@ const Signup = () => {
       console.log(docSnap.exists());
       if (!docSnap.exists()) {
         await setDoc(doc(db, "users", user.uid), {
+          name: "nanashi",
           email: user.email,
           uid: user.uid,
         });
@@ -63,6 +64,7 @@ const Signup = () => {
       const docSnap = await getDoc(docRef);
       if (!docSnap.exists()) {
         await setDoc(doc(db, "users", user.uid), {
+          name: user.displayName,
           email: user.email,
           uid: user.uid,
         });

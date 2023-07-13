@@ -6,7 +6,7 @@ import { RxCross1 } from "react-icons/rx";
 export const VerdiciInput = (props) => {
   const { verdici, setVerdici } = props;
   return (
-    <div className="flex flex-wrap w-full justify-center">
+    <div className="flex flex-wrap w-1/2 justify-center">
       <div className="flex items-center mr-4">
         <input
           type="radio"
@@ -16,8 +16,9 @@ export const VerdiciInput = (props) => {
           className="w-4 h-4"
           required
         />
-        <label htmlFor="red-radio" className="ml-2"></label>
-        <BiCircle className="text-blue-500 text-xl" />
+        <label htmlFor="red-radio" className="ml-2">
+          <BiCircle className="text-blue-500 text-xl" />
+        </label>
       </div>
       <div className="flex items-center mr-4">
         <input
