@@ -37,7 +37,7 @@ export const CheckURL = (url) => {
   const urlPathArr = urlPath.split("/").slice(1);
 
   if (!urlPathArr[1]) {
-    return { status: false, message: "not valid URL" };
+    return { status: false, message: "not contest page" };
   }
   const contestid = urlPathArr[1];
   const contestAlphabet = contestid.slice(0, 3);
@@ -55,6 +55,7 @@ export const CheckURL = (url) => {
     return {
       status: true,
       type: "regular",
+      id: urlPathArr[3],
       contestAlphabet,
       contestNumber,
       taskAlphabet,
@@ -63,6 +64,7 @@ export const CheckURL = (url) => {
     return {
       status: true,
       type: "typical",
+      id: urlPathArr[3],
       taskAlphabet: stringToNumber(taskAlphabet),
     };
   }

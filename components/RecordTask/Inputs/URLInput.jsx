@@ -2,7 +2,7 @@ import { useState } from "react";
 import { CheckURL } from "../../../utils/recordtask/checkURL";
 
 export const URLInput = (props) => {
-  const { url, setUrl } = props;
+  const { register } = props;
   return (
     <div className="flex w-full justify-center items-end">
       <div className="relative mr-4 lg:w-full xl:w-1/2 w-2/4 md:w-full text-left pb-10">
@@ -14,7 +14,7 @@ export const URLInput = (props) => {
             type="url"
             id="hero-field"
             name="hero-field"
-            onChange={(e) => setUrl(e.target.value)}
+            {...register("url")}
             className="w-full bg-gray-100 bg-opacity-50 rounded focus:ring-2 focus:ring-indigo-200 focus:bg-transparent border border-gray-300 focus:border-indigo-500 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
             required
           />

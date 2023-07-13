@@ -4,7 +4,7 @@ import { BsTriangle } from "react-icons/bs";
 import { RxCross1 } from "react-icons/rx";
 
 export const VerdiciInput = (props) => {
-  const { verdici, setVerdici } = props;
+  const { register } = props;
   return (
     <div className="flex flex-wrap w-1/2 justify-center">
       <div className="flex items-center mr-4">
@@ -12,12 +12,13 @@ export const VerdiciInput = (props) => {
           type="radio"
           value="circle"
           name="colored-radio"
-          onChange={(e) => setVerdici(e.target.value)}
-          className="w-4 h-4"
+          id="blue-radio"
+          {...register("verdici")}
+          className="w-6 h-6"
           required
         />
-        <label htmlFor="red-radio" className="ml-2">
-          <BiCircle className="text-blue-500 text-xl" />
+        <label htmlFor="blue-radio" className="ml-2">
+          <BiCircle className="text-blue-500 text-3xl" />
         </label>
       </div>
       <div className="flex items-center mr-4">
@@ -25,11 +26,12 @@ export const VerdiciInput = (props) => {
           type="radio"
           value="triangle"
           name="colored-radio"
-          onChange={(e) => setVerdici(e.target.value)}
-          className="w-4 h-4"
+          id="yellow-radio"
+          {...register("verdici")}
+          className="w-6 h-6"
         />
-        <label htmlFor="teal-radio" className="ml-2">
-          <BsTriangle className="text-yellow-500 text-xl" />
+        <label htmlFor="yellow-radio" className="ml-2">
+          <BsTriangle className="text-yellow-500 text-3xl" />
         </label>
       </div>
       <div className="flex items-center mr-4">
@@ -37,11 +39,12 @@ export const VerdiciInput = (props) => {
           type="radio"
           value="cross"
           name="colored-radio"
-          onChange={(e) => setVerdici(e.target.value)}
-          className="w-4 h-4"
+          id="red-radio"
+          {...register("verdici")}
+          className="w-6 h-6"
         />
-        <label htmlFor="yellow-radio" className="ml-2">
-          <RxCross1 className="text-red-400 text-xl" />
+        <label htmlFor="red-radio" className="ml-2">
+          <RxCross1 className="text-red-400 text-3xl" />
         </label>
       </div>
     </div>
