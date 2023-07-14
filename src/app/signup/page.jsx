@@ -35,7 +35,7 @@ const Signup = () => {
       console.log(docSnap.exists());
       if (!docSnap.exists()) {
         await setDoc(doc(db, "users", user.uid), {
-          name: "nanashi",
+          name: "名無し",
           email: user.email,
           uid: user.uid,
         });

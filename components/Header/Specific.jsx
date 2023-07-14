@@ -28,16 +28,16 @@ const Specific = () => {
             DashBord
           </Link>
           <Link
-            href="/dashbord"
+            href="/record"
+            className="font-bold hover:underline hover:font-extrabold"
+          >
+            Record
+          </Link>
+          <Link
+            href="/list"
             className="font-bold hover:underline hover:font-extrabold"
           >
             List
-          </Link>
-          <Link
-            href="/"
-            className="font-bold hover:underline hover:font-extrabold"
-          >
-            TopPage
           </Link>
         </nav>
         <button

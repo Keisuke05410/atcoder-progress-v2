@@ -11,6 +11,13 @@ const isRegularContest = (contestAlphabet) => {
   return false;
 };
 
+export const URL_last = (url) => {
+  const urlObj = new URL(url);
+  const urlPath = urlObj.pathname;
+  const urlPathArr = urlPath.split("/").slice(1);
+  return urlPathArr[urlPathArr.length - 1];
+};
+
 // urlの形式をチェックする関数
 export const CheckURL = (url) => {
   // urlをパースする
@@ -71,6 +78,8 @@ export const CheckURL = (url) => {
       status: true,
       type: "typical",
       id: urlPathArr[3],
+      contestAlphabet: "",
+      contestNumber: "",
       taskAlphabet,
     };
   }
