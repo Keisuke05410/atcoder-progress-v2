@@ -3,6 +3,7 @@ import React from "react";
 import { URL_last } from "../../../../utils/recordtask/checkURL";
 import { showSymbol } from "../utils/showSymbol";
 import { BsTrash } from "react-icons/bs";
+import { deletePost } from "../../../../lib/deletePost";
 
 const ShowList = (props) => {
   const { taskList } = props;
@@ -27,7 +28,11 @@ const ShowList = (props) => {
             </Link>
             <button
               type="button"
-              class="text-white bg-red-600 hover:bg-red-700 focus:ring-4 focus:outline-none font-medium rounded-lg text-sm p-2.5 text-center inline-flex items-center ml-2"
+              onClick={() => {
+                deletePost(task.id);
+                window.location.reload();
+              }}
+              className="text-white bg-red-600 rounded-full hover:bg-red-700 focus:ring-4 focus:outline-none font-medium text-sm p-2.5 text-center inline-flex items-center ml-2"
             >
               <BsTrash className="text-white text-lg" />
             </button>

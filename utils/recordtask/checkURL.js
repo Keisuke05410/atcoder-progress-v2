@@ -18,6 +18,10 @@ export const URL_last = (url) => {
   return urlPathArr[urlPathArr.length - 1];
 };
 
+export const createID = (id, uid) => {
+  return id + uid;
+};
+
 // urlの形式をチェックする関数
 export const CheckURL = (url) => {
   // urlをパースする

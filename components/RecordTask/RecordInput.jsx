@@ -1,33 +1,16 @@
-import React, { useState } from "react";
+import React from "react";
 import { VerdiciInput } from "./Inputs/VerdiciInput";
 import { URLInput } from "./Inputs/URLInput";
 import { CodeInput } from "./Inputs/CodeInput";
 import SubmitButton from "./Inputs/SubmitButton";
 import SelectLanguage from "./Inputs/SelectLanguage";
-import {
-  addDoc,
-  collection,
-  doc,
-  getDoc,
-  query,
-  serverTimestamp,
-  setDoc,
-  where,
-} from "firebase/firestore";
-import { db } from "../../lib/firebase";
-import { CheckURL } from "../../utils/recordtask/checkURL";
-import { get, useForm } from "react-hook-form";
+import { useForm } from "react-hook-form";
 import { useAuthContext } from "../../utils/auth/state";
-import { data } from "autoprefixer";
 import { newPost } from "../../lib/newPost";
 
 export const RecordInput = () => {
   const { user } = useAuthContext();
-  const {
-    register,
-    handleSubmit,
-    formState: { errors },
-  } = useForm();
+  const { register, handleSubmit, reset } = useForm();
   // submitbuttonが押された時の処理
   const uid = user.uid;
 
@@ -35,7 +18,7 @@ export const RecordInput = () => {
     <>
       <form
         onSubmit={handleSubmit((data) => {
-          newPost(data, uid);
+          newPost(data, uid, reset);
         })}
       >
         <URLInput register={register} />
