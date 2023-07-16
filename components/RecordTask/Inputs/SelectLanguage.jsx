@@ -12,8 +12,8 @@ const SelectLanguage = (props) => {
         required
       >
         <option value="python">python</option>
-        <option value="JavaScript">JavaScript</option>
-        <option value="C++">C++</option>
+        <option value="JavaScript">javascript</option>
+        <option value="C++">cpp</option>
       </select>
     </div>
   );

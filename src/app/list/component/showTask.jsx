@@ -2,14 +2,16 @@ import React, { useEffect, useState } from "react";
 import { deletePost } from "../../../../lib/deletePost";
 import { doc, getDoc } from "firebase/firestore";
 import { db } from "../../../../lib/firebase";
-import { showSymbol } from "../utils/showSymbol";
+import { showSymbol } from "./showSymbol";
+import ShowCount from "./showCount";
+import ShowCode from "./showCode";
 
 const ShowTask = (props) => {
   const { id, uid } = props;
+  const [isOpen, setIsOpen] = useState(false);
   const [docSnap, setDocSnap] = useState(null);
   useEffect(() => {
     const docRef = doc(db, "tasks", id + uid);
-    console.log(docRef);
     getDoc(docRef)
       .then((docSnap) => {
         setDocSnap(docSnap.data());
@@ -20,30 +22,27 @@ const ShowTask = (props) => {
   }, [id, uid]);
   return (
     <section className="text-gray-600 body-font">
-      <div className="container mx-auto flex px-5 py-24 md:flex-row flex-col items-center">
-        <div className="lg:flex-grow md:w-1/2 lg:pr-24 md:pr-16 flex flex-col md:items-start md:text-left mb-16 md:mb-0 items-center text-center">
-          <h1 className="title-font sm:text-4xl text-3xl mb-4 font-medium text-gray-900">
-            {docSnap ? (
-              <>
+      <div className="container mx-auto flex px-10 py-24 md:flex-row flex-col">
+        <div className="w-1/2 flex flex-col mb-16 md:mb-0 items-center text-center">
+          {docSnap ? (
+            <>
+              <h1 className="title-font sm:text-4xl text-3xl mb-4 font-medium text-primary-black">
                 {docSnap.contestAlphabet}-{docSnap.contestNumber}-
                 {docSnap.taskAlphabet}
-                <br className="hidden lg:inline-block" />
+              </h1>
+              <h2 className="sm:text-2xl text-xl mb-4 font-medium">
                 {showSymbol(docSnap.verdici)}
-              </>
-            ) : (
-              <div>loading...</div>
-            )}
-          </h1>
-          <p className="mb-8 leading-relaxed">
-            Copper mug try-hard pitchfork pour-over freegan heirloom neutra air
-            plant cold-pressed tacos poke beard tote bag. Heirloom echo park
-            mlkshk tote bag selvage hot chicken authentic tumeric truffaut
-            hexagon try-hard chambray.
-          </p>
+                {ShowCount(docSnap.count)}
+                last_edit : {docSnap.updatedAt.toDate().toLocaleDateString()}
+              </h2>
+            </>
+          ) : (
+            <div>loading...</div>
+          )}
           <div className="flex justify-center">
             <button
               onClick={() => deletePost(id)}
-              className="inline-flex text-white bg-indigo-500 border-0 py-2 px-6 focus:outline-none hover:bg-indigo-600 rounded text-lg"
+              className="inline-flex text-white bg-red-500 border-0 py-2 px-6 focus:outline-none hover:bg-red-600 rounded text-lg"
             >
               Delete
             </button>
@@ -52,7 +51,17 @@ const ShowTask = (props) => {
             </button>
           </div>
         </div>
-        <div className="lg:max-w-lg lg:w-full md:w-1/2 w-5/6">IMAGE</div>
+        <div className="w-1/2 flex items-center justify-center">
+          {docSnap ? (
+            docSnap.code === "" ? (
+              <div className="text-3xl">no code</div>
+            ) : (
+              <ShowCode code={docSnap.code} language={docSnap.language} />
+            )
+          ) : (
+            <div>loading...</div>
+          )}
+        </div>
       </div>
     </section>
   );

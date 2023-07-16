@@ -1,7 +1,7 @@
 import Link from "next/link";
 import React from "react";
 import { URL_last } from "../../../../utils/recordtask/checkURL";
-import { showSymbol } from "../utils/showSymbol";
+import { showSymbol } from "./showSymbol";
 import { BsTrash } from "react-icons/bs";
 import { deletePost } from "../../../../lib/deletePost";
 
