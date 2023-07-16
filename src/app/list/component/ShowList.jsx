@@ -30,7 +30,6 @@ const ShowList = (props) => {
               type="button"
               onClick={() => {
                 deletePost(task.id);
-                window.location.reload();
               }}
               className="text-white bg-red-600 rounded-full hover:bg-red-700 focus:ring-4 focus:outline-none font-medium text-sm p-2.5 text-center inline-flex items-center ml-2"
             >

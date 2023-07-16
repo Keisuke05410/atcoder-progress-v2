@@ -5,11 +5,18 @@ import { db } from "../../../../lib/firebase";
 import { showSymbol } from "./showSymbol";
 import ShowCount from "./showCount";
 import ShowCode from "./showCode";
+import Edit from "../../../../components/Edit/Edit";
+import { set } from "react-hook-form";
+import { useRouter } from "next/navigation";
 
 const ShowTask = (props) => {
   const { id, uid } = props;
+  const router = useRouter();
   const [isOpen, setIsOpen] = useState(false);
   const [docSnap, setDocSnap] = useState(null);
+  const handleOverlayClick = (e) => {
+    setIsOpen(false);
+  };
   useEffect(() => {
     const docRef = doc(db, "tasks", id + uid);
     getDoc(docRef)
@@ -20,6 +27,7 @@ const ShowTask = (props) => {
         console.log("Error getting document:", error);
       });
   }, [id, uid]);
+  console.log(docSnap);
   return (
     <section className="text-gray-600 body-font">
       <div className="container mx-auto flex px-10 py-24 md:flex-row flex-col">
@@ -41,13 +49,19 @@ const ShowTask = (props) => {
           )}
           <div className="flex justify-center">
             <button
-              onClick={() => deletePost(id)}
+              onClick={() => {
+                deletePost(id + uid);
+                router.push("/list");
+              }}
               className="inline-flex text-white bg-red-500 border-0 py-2 px-6 focus:outline-none hover:bg-red-600 rounded text-lg"
             >
               Delete
             </button>
-            <button className="ml-4 inline-flex text-gray-700 bg-gray-100 border-0 py-2 px-6 focus:outline-none hover:bg-gray-200 rounded text-lg">
-              Button
+            <button
+              onClick={() => setIsOpen(true)}
+              className="ml-4 inline-flex text-gray-700 bg-gray-100 border-0 py-2 px-6 focus:outline-none hover:bg-gray-200 rounded text-lg"
+            >
+              Edit
             </button>
           </div>
         </div>
@@ -63,6 +77,13 @@ const ShowTask = (props) => {
           )}
         </div>
       </div>
+      {docSnap
+        ? isOpen && (
+            <div onClick={handleOverlayClick}>
+              <Edit setIsOpen={setIsOpen} docSnap={docSnap} />
+            </div>
+          )
+        : null}
     </section>
   );
 };

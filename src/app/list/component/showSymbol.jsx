@@ -4,7 +4,7 @@ import { RxCross1 } from "react-icons/rx";
 
 export const showSymbol = (verdici) => {
   return (
-    <div className="flex items-center mb-2">
+    <div className="flex items-center">
       state :&nbsp;
       {verdici === "circle" ? (
         <BiCircle className="text-blue-500" />

@@ -1,6 +1,7 @@
 "use client";
 
 import { collection, getDocs, query, where } from "firebase/firestore";
+import { onSnapshot } from "firebase/firestore";
 import React, { useEffect, useState } from "react";
 import { db } from "../../../lib/firebase";
 import { useAuthContext } from "../../../utils/auth/state";
@@ -14,13 +15,14 @@ const Page = () => {
 
   useEffect(() => {
     const q = query(collection(db, "tasks"), where("uid", "==", uid));
-    getDocs(q).then((querySnapshot) => {
-      const tasks = [];
-      querySnapshot.forEach((doc) => {
-        tasks.push({ id: doc.id, ...doc.data() });
-      });
-      setTaskList(tasks);
+    const obserber = onSnapshot(q, (querySnapshot) => {
+      const itemList = querySnapshot.docs.map((doc) => ({
+        id: doc.id,
+        ...doc.data(),
+      }));
+      setTaskList(itemList);
     });
+    return () => obserber();
   }, [uid]);
 
   console.log(taskList);
