@@ -21,7 +21,7 @@ const ShowList = (props) => {
               className="flex justify-center items-center w-full cursor-pointer rounded-lg p-4 transition duration-500 text-xl hover:bg-neutral-100 hover:text-neutral-500 focus:bg-neutral-100 focus:text-neutral-500 focus:ring-0 "
             >
               <div className="pr-5">
-                {`${task.contestAlphabet}/${task.contestNumber}/${task.taskAlphabet}`}
+                {`${task.contestAlphabet}-${task.contestNumber}-${task.taskAlphabet}`}
               </div>
               <div className="pr-5">{showSymbol(task.verdici)}</div>
               {task.updatedAt.toDate().toLocaleDateString()}

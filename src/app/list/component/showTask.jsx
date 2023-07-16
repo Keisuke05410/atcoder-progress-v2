@@ -9,6 +9,7 @@ const ShowTask = (props) => {
   const [docSnap, setDocSnap] = useState(null);
   useEffect(() => {
     const docRef = doc(db, "tasks", id + uid);
+    console.log(docRef);
     getDoc(docRef)
       .then((docSnap) => {
         setDocSnap(docSnap.data());
@@ -17,16 +18,21 @@ const ShowTask = (props) => {
         console.log("Error getting document:", error);
       });
   }, [id, uid]);
-  console.log(docSnap);
   return (
     <section className="text-gray-600 body-font">
       <div className="container mx-auto flex px-5 py-24 md:flex-row flex-col items-center">
         <div className="lg:flex-grow md:w-1/2 lg:pr-24 md:pr-16 flex flex-col md:items-start md:text-left mb-16 md:mb-0 items-center text-center">
           <h1 className="title-font sm:text-4xl text-3xl mb-4 font-medium text-gray-900">
-            {docSnap.contestAlphabet}/{docSnap.contestNumber}/
-            {docSnap.taskAlphabet}
-            <br className="hidden lg:inline-block" />
-            {showSymbol(docSnap.verdici)}
+            {docSnap ? (
+              <>
+                {docSnap.contestAlphabet}-{docSnap.contestNumber}-
+                {docSnap.taskAlphabet}
+                <br className="hidden lg:inline-block" />
+                {showSymbol(docSnap.verdici)}
+              </>
+            ) : (
+              <div>loading...</div>
+            )}
           </h1>
           <p className="mb-8 leading-relaxed">
             Copper mug try-hard pitchfork pour-over freegan heirloom neutra air
