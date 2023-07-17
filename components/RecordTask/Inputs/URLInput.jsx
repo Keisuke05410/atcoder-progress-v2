@@ -1,6 +1,3 @@
-import { useState } from "react";
-import { CheckURL } from "../../../utils/recordtask/checkURL";
-
 export const URLInput = (props) => {
   const { register } = props;
   return (

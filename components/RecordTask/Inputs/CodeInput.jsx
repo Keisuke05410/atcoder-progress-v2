@@ -1,5 +1,3 @@
-import { useState } from "react";
-
 export const CodeInput = (props) => {
   const { register } = props;
   return (
