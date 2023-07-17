@@ -1,12 +1,18 @@
 import Link from "next/link";
-import React from "react";
+import React, { useState } from "react";
 import { URL_last } from "../../../../utils/recordtask/checkURL";
 import { showSymbol } from "./showSymbol";
-import { BsTrash } from "react-icons/bs";
+import { BsBoxArrowUpRight, BsTrash } from "react-icons/bs";
 import { deletePost } from "../../../../lib/deletePost";
+import { BiPencil } from "react-icons/bi";
+import Edit from "../../../../components/Edit/Edit";
 
 const ShowList = (props) => {
   const { taskList } = props;
+  const [isOpen, setIsOpen] = useState(false);
+  const handleOverlayClick = () => {
+    setIsOpen(false);
+  };
 
   return (
     <div className="flex items-center justify-center">
@@ -35,6 +41,28 @@ const ShowList = (props) => {
             >
               <BsTrash className="text-white text-lg" />
             </button>
+            <button
+              type="button"
+              onClick={() => {
+                setIsOpen(true);
+              }}
+              className="text-white bg-blue-600 rounded-full hover:bg-blue-700 focus:ring-4 focus:outline-none font-medium text-sm p-2.5 text-center inline-flex items-center ml-2"
+            >
+              <BiPencil className="text-white text-lg" />
+            </button>
+            <a
+              href={task.url}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-white bg-gray-300 rounded-full hover:bg-gray-400 focus:ring-4 focus:outline-none font-medium text-sm p-2.5 text-center inline-flex items-center ml-2"
+            >
+              <BsBoxArrowUpRight className="text-blask text-lg" />
+            </a>
+            {isOpen && (
+              <div onClick={handleOverlayClick}>
+                <Edit setIsOpen={setIsOpen} docSnap={task} />
+              </div>
+            )}
           </div>
         ))}
       </div>
