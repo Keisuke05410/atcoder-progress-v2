@@ -23,6 +23,7 @@ export const EditInput = (props) => {
       <form
         onSubmit={handleSubmit((data) => {
           updatePost(data, reset);
+          setIsOpen(false);
           router.push("/list");
         })}
       >
