@@ -1,11 +1,10 @@
 "use client";
 
-import { collection, getDocs, query, where } from "firebase/firestore";
+import { collection, query, where } from "firebase/firestore";
 import { onSnapshot } from "firebase/firestore";
 import React, { useEffect, useState } from "react";
 import { db } from "../../../lib/firebase";
 import { useAuthContext } from "../../../utils/auth/state";
-import Link from "next/link";
 import ShowList from "./component/showList";
 
 const Page = () => {

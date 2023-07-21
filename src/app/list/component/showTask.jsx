@@ -6,7 +6,6 @@ import { showSymbol } from "./showSymbol";
 import ShowCount from "./showCount";
 import ShowCode from "./showCode";
 import Edit from "../../../../components/Edit/Edit";
-import { set } from "react-hook-form";
 import { useRouter } from "next/navigation";
 
 const ShowTask = (props) => {

@@ -2,13 +2,15 @@ import React from "react";
 import { VerdiciInput } from "../RecordTask/Inputs/VerdiciInput";
 import { URLInput } from "../RecordTask/Inputs/URLInput";
 import { CodeInput } from "../RecordTask/Inputs/CodeInput";
-import SubmitButton from "../RecordTask/Inputs/SubmitButton";
 import SelectLanguage from "../RecordTask/Inputs/SelectLanguage";
-import { set, useForm } from "react-hook-form";
+import { useForm } from "react-hook-form";
 import { updatePost } from "../../lib/updatePost";
 import URLInfoInput from "./Inputs/URLInfoInput";
 import CountInput from "./Inputs/CountInput";
+<<<<<<< HEAD
 import { useRouter } from "next/navigation";
+=======
+>>>>>>> ed0947436b1d5832db659c9d7e4b704c3afc0a31
 
 export const EditInput = (props) => {
   const { docSnap, setIsOpen } = props;

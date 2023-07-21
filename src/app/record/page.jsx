@@ -1,7 +1,7 @@
 "use client";
 
 import { useAccessLimit } from "../../../utils/auth/accessLimit";
-import React, { useState } from "react";
+import React from "react";
 import { RecordInput } from "../../../components/RecordTask/RecordInput";
 
 const Record = () => {

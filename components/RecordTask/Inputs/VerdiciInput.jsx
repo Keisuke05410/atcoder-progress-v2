@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import { BiCircle } from "react-icons/bi";
 import { BsTriangle } from "react-icons/bs";
 import { RxCross1 } from "react-icons/rx";
