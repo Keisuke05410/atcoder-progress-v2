@@ -1,32 +1,20 @@
 "use client";
 
-import { useAuthContext } from "../../utils/auth/state";
 import { useRouter } from "next/navigation";
-import { useEffect, useState } from "react";
+import { useAuthState } from "react-firebase-hooks/auth";
+import { auth } from "../../lib/firebase";
 
 export default function Home() {
-  const { user } = useAuthContext();
-  const [isLoading, setIsLoading] = useState(true);
+  const [user, loading, error] = useAuthState(auth);
   const router = useRouter();
 
-  useEffect(() => {
-    // 一定時間待機して認証情報の非同期取得が完了するまでローディング状態を表示
-    const delay = setTimeout(() => {
-      setIsLoading(false);
-    }, 500);
-
-    return () => clearTimeout(delay); // クリーンアップ時にタイマーをクリア
-  }, []);
-
-  useEffect(() => {
-    if (user) {
-      router.push("/dashbord");
-    }
-  }, [user, router]);
-
-  if (isLoading) {
+  if (loading) {
     return <div>Loading...</div>;
   }
 
-  return <div>TopPage</div>;
+  if (user) {
+    router.replace("/dashboard");
+  } else {
+    return <div>TopPage</div>;
+  }
 }

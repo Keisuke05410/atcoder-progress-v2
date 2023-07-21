@@ -5,11 +5,12 @@ import { CodeInput } from "./Inputs/CodeInput";
 import SubmitButton from "./Inputs/SubmitButton";
 import SelectLanguage from "./Inputs/SelectLanguage";
 import { useForm } from "react-hook-form";
-import { useAuthContext } from "../../utils/auth/state";
 import { newPost } from "../../lib/newPost";
+import { useAuthState } from "react-firebase-hooks/auth";
+import { auth } from "../../lib/firebase";
 
 export const RecordInput = () => {
-  const { user } = useAuthContext();
+  const [user, loading, error] = useAuthState(auth);
   const { register, handleSubmit, reset } = useForm();
   const uid = user?.uid || "";
 

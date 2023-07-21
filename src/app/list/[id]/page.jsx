@@ -2,10 +2,11 @@
 
 import React from "react";
 import ShowTask from "../_component/showTask";
-import { useAuthContext } from "../../../../utils/auth/state";
+import { useAuthState } from "react-firebase-hooks/auth";
+import { auth } from "../../../../lib/firebase";
 
 const Page = ({ params }) => {
-  const { user } = useAuthContext();
+  const [user, loading, error] = useAuthState(auth);
   const uid = user ? user.uid : null;
   const { id } = params;
   return <ShowTask id={id} uid={uid} />;

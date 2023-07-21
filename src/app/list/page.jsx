@@ -3,13 +3,13 @@
 import { collection, query, where } from "firebase/firestore";
 import { onSnapshot } from "firebase/firestore";
 import React, { useEffect, useState } from "react";
-import { db } from "../../../lib/firebase";
-import { useAuthContext } from "../../../utils/auth/state";
+import { auth, db } from "../../../lib/firebase";
 import ShowList from "./_component/showList";
+import { useAuthState } from "react-firebase-hooks/auth";
 
 const Page = () => {
   const [taskList, setTaskList] = useState([]);
-  const { user } = useAuthContext();
+  const [user, loading, error] = useAuthState(auth);
   const uid = user ? user.uid : null;
 
   useEffect(() => {

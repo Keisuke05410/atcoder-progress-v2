@@ -1,25 +1,15 @@
 "use client";
 
-import { useAuthContext } from "../../utils/auth/state";
-import React, { useEffect, useState } from "react";
-import { useRouter } from "next/navigation";
+import React from "react";
 import General from "./General";
 import Specific from "./Specific";
+import { useAuthState } from "react-firebase-hooks/auth";
+import { auth } from "../../lib/firebase";
 
 const Header = () => {
-  const { user } = useAuthContext();
-  const [isLoading, setIsLoading] = useState(true);
-  const router = useRouter();
+  const [user, loading, error] = useAuthState(auth);
 
-  useEffect(() => {
-    // 一定時間待機して認証情報の非同期取得が完了するまでローディング状態を表示
-    const delay = setTimeout(() => {
-      setIsLoading(false);
-    }, 500);
-    return () => clearTimeout(delay); // クリーンアップ時にタイマーをクリア
-  }, []);
-
-  if (isLoading) {
+  if (loading) {
     return (
       <header className="text-primary-white body-font bg-primary-gray">
         <div className="container mx-auto flex flex-wrap p-5 flex-col md:flex-row items-center">
