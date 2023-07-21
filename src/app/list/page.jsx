@@ -5,7 +5,7 @@ import { onSnapshot } from "firebase/firestore";
 import React, { useEffect, useState } from "react";
 import { db } from "../../../lib/firebase";
 import { useAuthContext } from "../../../utils/auth/state";
-import ShowList from "./component/showList";
+import ShowList from "./_component/showList";
 
 const Page = () => {
   const [taskList, setTaskList] = useState([]);

@@ -40,8 +40,8 @@ const Login = () => {
       });
   };
 
-  const handleGoogleLogin = async () => {
-    await signInWithPopup(auth, googleProvider)
+  const handleGoogleLogin = () => {
+    signInWithPopup(auth, googleProvider)
       .then((result) => {
         const user = result.user;
         router.push("/dashbord");

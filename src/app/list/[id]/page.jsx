@@ -1,7 +1,7 @@
 "use client";
 
 import React from "react";
-import ShowTask from "../component/showTask";
+import ShowTask from "../_component/showTask";
 import { useAuthContext } from "../../../../utils/auth/state";
 
 const Page = ({ params }) => {

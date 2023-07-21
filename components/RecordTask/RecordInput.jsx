@@ -11,7 +11,7 @@ import { newPost } from "../../lib/newPost";
 export const RecordInput = () => {
   const { user } = useAuthContext();
   const { register, handleSubmit, reset } = useForm();
-  const uid = user.uid;
+  const uid = user?.uid || "";
 
   return (
     <>
