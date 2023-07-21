@@ -1,5 +1,5 @@
 import { deleteDoc, doc } from "firebase/firestore";
-import { db } from "./firebase";
+import { db } from "../auth/firebase";
 
 export const deletePost = (id) => {
   deleteDoc(doc(db, "tasks", id))

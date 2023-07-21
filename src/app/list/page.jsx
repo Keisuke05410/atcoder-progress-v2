@@ -3,7 +3,7 @@
 import { collection, query, where } from "firebase/firestore";
 import { onSnapshot } from "firebase/firestore";
 import React, { useEffect, useState } from "react";
-import { auth, db } from "../../../lib/firebase";
+import { auth, db } from "../../utils/auth/firebase";
 import ShowList from "./_component/showList";
 import { useAuthState } from "react-firebase-hooks/auth";
 

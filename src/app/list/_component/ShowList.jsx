@@ -1,11 +1,11 @@
 import Link from "next/link";
 import React, { useState } from "react";
-import { URL_last } from "../../../../utils/recordtask/checkURL";
+import { URL_last } from "../../../utils/url/checkURL";
 import { showSymbol } from "./showSymbol";
 import { BsBoxArrowUpRight, BsTrash } from "react-icons/bs";
-import { deletePost } from "../../../../lib/deletePost";
+import { deletePost } from "../../../utils/task/deletePost";
 import { BiPencil } from "react-icons/bi";
-import Edit from "../../../../components/Edit/Edit";
+import Edit from "../../../components/Edit/Edit";
 
 const ShowList = (props) => {
   const { taskList } = props;

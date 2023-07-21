@@ -3,7 +3,7 @@
 import { signOut } from "firebase/auth";
 import Link from "next/link";
 import React from "react";
-import { auth } from "../../lib/firebase";
+import { auth } from "../../utils/auth/firebase";
 import { useRouter } from "next/navigation";
 
 const Specific = () => {
@@ -22,10 +22,10 @@ const Specific = () => {
         </a>
         <nav className="md:ml-auto md:mr-auto flex flex-wrap items-center text-base justify-center space-x-20">
           <Link
-            href="/dashbord"
+            href="/dashboard"
             className="font-bold hover:underline hover:font-extrabold"
           >
-            DashBord
+            DashBoard
           </Link>
           <Link
             href="/record"

@@ -24,7 +24,7 @@ const Login = () => {
       .then((userCredential) => {
         // Signed in
         const user = userCredential.user;
-        router.push("/dashbord");
+        router.push("/dashboard");
         // ...
       })
       .catch((error) => {
@@ -44,7 +44,7 @@ const Login = () => {
     signInWithPopup(auth, googleProvider)
       .then((result) => {
         const user = result.user;
-        router.push("/dashbord");
+        router.push("/dashboard");
       })
       .catch((error) => {
         // Handle Errors here.

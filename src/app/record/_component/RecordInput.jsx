@@ -1,13 +1,13 @@
 import React from "react";
-import { VerdiciInput } from "./Inputs/VerdiciInput";
-import { URLInput } from "./Inputs/URLInput";
-import { CodeInput } from "./Inputs/CodeInput";
-import SubmitButton from "./Inputs/SubmitButton";
-import SelectLanguage from "./Inputs/SelectLanguage";
+import { VerdiciInput } from "../../../components/Inputs/VerdiciInput";
+import { URLInput } from "../../../components/Inputs/URLInput";
+import { CodeInput } from "../../../components/Inputs/CodeInput";
+import SubmitButton from "../../../components/Inputs/SubmitButton";
+import SelectLanguage from "../../../components/Inputs/SelectLanguage";
 import { useForm } from "react-hook-form";
-import { newPost } from "../../lib/newPost";
+import { newPost } from "../../../utils/task/newPost";
 import { useAuthState } from "react-firebase-hooks/auth";
-import { auth } from "../../lib/firebase";
+import { auth } from "../../../utils/auth/firebase";
 
 export const RecordInput = () => {
   const [user, loading, error] = useAuthState(auth);

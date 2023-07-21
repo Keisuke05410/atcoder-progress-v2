@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from "react";
-import { deletePost } from "../../../../lib/deletePost";
+import { deletePost } from "../../../utils/task/deletePost";
 import { doc, getDoc } from "firebase/firestore";
 import { db } from "../../../../lib/firebase";
 import { showSymbol } from "./showSymbol";
 import ShowCount from "./showCount";
 import ShowCode from "./showCode";
-import Edit from "../../../../components/Edit/Edit";
+import Edit from "../../../components/Edit/Edit";
 import { useRouter } from "next/navigation";
 
 const ShowTask = (props) => {

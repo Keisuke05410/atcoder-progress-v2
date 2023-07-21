@@ -4,7 +4,7 @@ import React from "react";
 import General from "./General";
 import Specific from "./Specific";
 import { useAuthState } from "react-firebase-hooks/auth";
-import { auth } from "../../lib/firebase";
+import { auth } from "../../utils/auth/firebase";
 
 const Header = () => {
   const [user, loading, error] = useAuthState(auth);

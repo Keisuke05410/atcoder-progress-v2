@@ -2,7 +2,7 @@
 
 import { useAccessLimit } from "../../../utils/auth/accessLimit";
 import React from "react";
-import { RecordInput } from "../../../components/RecordTask/RecordInput";
+import { RecordInput } from "./_component/RecordInput";
 
 const Record = () => {
   useAccessLimit();

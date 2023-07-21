@@ -1,6 +1,6 @@
 import { doc, serverTimestamp, updateDoc } from "firebase/firestore";
-import { CheckURL, URL_last } from "../utils/recordtask/checkURL";
-import { db } from "./firebase";
+import { CheckURL, URL_last } from "../url/checkURL";
+import { db } from "../auth/firebase";
 
 export const updatePost = (data, reset) => {
   // urlからコンテスト情報を取得

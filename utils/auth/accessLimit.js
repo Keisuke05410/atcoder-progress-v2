@@ -3,7 +3,7 @@
 import { useRouter } from "next/navigation";
 import { useEffect } from "react";
 import { useAuthState } from "react-firebase-hooks/auth";
-import { auth } from "../../lib/firebase";
+import { auth } from "../../src/utils/auth/firebase";
 
 export const useAccessLimit = () => {
   const [user, loading, error] = useAuthState(auth);

@@ -1,12 +1,12 @@
 import React from "react";
-import { VerdiciInput } from "../RecordTask/Inputs/VerdiciInput";
-import { URLInput } from "../RecordTask/Inputs/URLInput";
-import { CodeInput } from "../RecordTask/Inputs/CodeInput";
-import SelectLanguage from "../RecordTask/Inputs/SelectLanguage";
+import { VerdiciInput } from "../Inputs/VerdiciInput";
+import { URLInput } from "../Inputs/URLInput";
+import { CodeInput } from "../Inputs/CodeInput";
+import SelectLanguage from "../Inputs/SelectLanguage";
 import { useForm } from "react-hook-form";
-import { updatePost } from "../../lib/updatePost";
-import URLInfoInput from "./Inputs/URLInfoInput";
-import CountInput from "./Inputs/CountInput";
+import { updatePost } from "../../utils/task/updatePost";
+import URLInfoInput from "../Inputs/URLInfoInput";
+import CountInput from "../Inputs/CountInput";
 
 import { useRouter } from "next/navigation";
 

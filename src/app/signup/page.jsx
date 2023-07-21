@@ -38,7 +38,7 @@ const Signup = () => {
           email: user.email,
           uid: user.uid,
         });
-        router.push("/dashbord");
+        router.push("/dashboard");
       }
     } catch (error) {
       const errorCode = error.code;
@@ -67,7 +67,7 @@ const Signup = () => {
           email: user.email,
           uid: user.uid,
         });
-        router.push("/dashbord");
+        router.push("/dashboard");
       }
     } catch (error) {
       const errorCode = error.code;

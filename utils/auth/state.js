@@ -1,6 +1,6 @@
 "use client";
 
-import { auth } from "../../lib/firebase";
+import { auth } from "../../src/utils/auth/firebase";
 
 const { createContext, useEffect, useState, useContext } = require("react");
 
