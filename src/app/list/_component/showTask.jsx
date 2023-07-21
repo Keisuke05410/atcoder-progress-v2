@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { deletePost } from "../../../utils/task/deletePost";
 import { doc, getDoc } from "firebase/firestore";
-import { db } from "../../../../lib/firebase";
+import { db } from "../../../utils/auth/firebase";
 import { showSymbol } from "./showSymbol";
 import ShowCount from "./showCount";
 import ShowCode from "./showCode";

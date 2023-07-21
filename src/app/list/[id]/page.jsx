@@ -3,7 +3,7 @@
 import React from "react";
 import ShowTask from "../_component/showTask";
 import { useAuthState } from "react-firebase-hooks/auth";
-import { auth } from "../../../../lib/firebase";
+import { auth } from "../../../utils/auth/firebase";
 
 const Page = ({ params }) => {
   const [user, loading, error] = useAuthState(auth);
