@@ -18,7 +18,7 @@ const Page = () => {
     const obserber = onSnapshot(q, (querySnapshot) => {
       const itemList = querySnapshot.docs.map((doc) => ({
         id: doc.id,
-        ...doc.data(),
+        ...doc.data({ serverTimestamps: "estimate" }),
       }));
       setTaskList(itemList);
     });

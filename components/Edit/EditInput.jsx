@@ -8,10 +8,11 @@ import { set, useForm } from "react-hook-form";
 import { updatePost } from "../../lib/updatePost";
 import URLInfoInput from "./Inputs/URLInfoInput";
 import CountInput from "./Inputs/CountInput";
-import { doc } from "firebase/firestore";
+import { useRouter } from "next/navigation";
 
 export const EditInput = (props) => {
   const { docSnap, setIsOpen } = props;
+  const router = useRouter();
   const { register, handleSubmit, reset } = useForm({ defaultValues: docSnap });
   const handleModalClick = (e) => {
     e.stopPropagation();
@@ -22,6 +23,7 @@ export const EditInput = (props) => {
       <form
         onSubmit={handleSubmit((data) => {
           updatePost(data, reset);
+          router.push("/list");
         })}
       >
         <URLInput register={register} />
