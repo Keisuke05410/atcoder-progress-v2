@@ -7,10 +7,8 @@ import { useForm } from "react-hook-form";
 import { updatePost } from "../../lib/updatePost";
 import URLInfoInput from "./Inputs/URLInfoInput";
 import CountInput from "./Inputs/CountInput";
-<<<<<<< HEAD
+
 import { useRouter } from "next/navigation";
-=======
->>>>>>> ed0947436b1d5832db659c9d7e4b704c3afc0a31
 
 export const EditInput = (props) => {
   const { docSnap, setIsOpen } = props;
