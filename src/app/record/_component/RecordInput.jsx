@@ -9,9 +9,12 @@ import { newPost } from "../../../utils/task/newPost";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { auth } from "../../../utils/auth/firebase";
 
-export const RecordInput = () => {
+export const RecordInput = (props) => {
+  const { url, code } = props;
   const [user, loading, error] = useAuthState(auth);
-  const { register, handleSubmit, reset } = useForm();
+  const { register, handleSubmit, reset } = useForm({
+    defaultValues: { url: url, code: code },
+  });
   const uid = user?.uid || "";
 
   return (
