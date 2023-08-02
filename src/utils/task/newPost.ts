@@ -2,7 +2,11 @@ import { doc, getDoc, serverTimestamp, setDoc } from "firebase/firestore";
 import { CheckURL } from "../url/checkURL";
 import { db } from "../auth/firebase";
 
-export const newPost = (data, uid, reset) => {
+export const newPost = (
+  data: { url: string; verdici: string; code: string; language: string },
+  uid: string,
+  reset: () => void
+) => {
   // urlからコンテスト情報を取得
   const urlInfo = CheckURL(data.url);
   // userのuidを取得
@@ -44,7 +48,7 @@ export const newPost = (data, uid, reset) => {
       alert("Please enter a valid URL!");
     }
     // 保存に失敗した場合
-  } catch (e) {
+  } catch (e: any) {
     console.error("Error adding document: ", e);
   }
 };

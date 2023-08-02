@@ -1,4 +1,4 @@
-export const CodeInput = (props) => {
+export const CodeInput = (props: { register: any }) => {
   const { register } = props;
   return (
     <>

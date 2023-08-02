@@ -1,6 +1,6 @@
 import React from "react";
 
-const SelectLanguage = (props) => {
+const SelectLanguage = (props: { register: any }) => {
   const { register } = props;
 
   return (

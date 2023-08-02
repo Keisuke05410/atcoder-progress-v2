@@ -3,8 +3,8 @@ import { BiCircle } from "react-icons/bi";
 import { BsTriangle } from "react-icons/bs";
 import { RxCross1 } from "react-icons/rx";
 
-const CountInput = (props) => {
-  const { register, defaultCount } = props;
+const CountInput = (props: { register: any }) => {
+  const { register } = props;
   return (
     <div className="flex w-full justify-center items-center pt-5">
       <div className="flex space-x-2 relative mr-4 lg:w-full xl:w-1/2 w-2/4 md:w-full text-center">

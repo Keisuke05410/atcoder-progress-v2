@@ -2,7 +2,7 @@ import React from "react";
 import SyntaxHighlighter from "react-syntax-highlighter/dist/esm/default-highlight";
 import { docco } from "react-syntax-highlighter/dist/esm/styles/hljs";
 
-const ShowCode = (props) => {
+const ShowCode = (props: { code: any; language: any }) => {
   const { code, language } = props;
   return (
     <SyntaxHighlighter language={language} style={docco}>

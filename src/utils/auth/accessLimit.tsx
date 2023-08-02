@@ -9,11 +9,9 @@ export const useAccessLimit = () => {
   const [user, loading, error] = useAuthState(auth);
   const router = useRouter();
 
-  if (loading) {
-    return <div>Loading...</div>;
-  } else {
-    if (user == null) {
+  useEffect(() => {
+    if (!loading && user == null) {
       router.replace("/");
     }
-  }
+  }, [loading, user, router]);
 };

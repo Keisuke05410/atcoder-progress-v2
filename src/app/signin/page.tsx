@@ -10,15 +10,19 @@ const Login = () => {
   const [password, setPassword] = useState("");
   const router = useRouter();
 
-  const handleChangeEmail = (e) => {
+  const handleChangeEmail = (e: {
+    target: { value: React.SetStateAction<string> };
+  }) => {
     setEmail(e.target.value);
   };
 
-  const handleChangePassword = (e) => {
+  const handleChangePassword = (e: {
+    target: { value: React.SetStateAction<string> };
+  }) => {
     setPassword(e.target.value);
   };
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = async (e: { preventDefault: () => void }) => {
     e.preventDefault();
     signInWithEmailAndPassword(auth, email, password)
       .then((userCredential) => {

@@ -1,4 +1,4 @@
-export const URLInput = (props) => {
+export const URLInput = (props: { register: any }) => {
   const { register } = props;
   return (
     <div className="flex w-full justify-center items-end">

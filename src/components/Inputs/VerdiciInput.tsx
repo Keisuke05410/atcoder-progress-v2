@@ -3,7 +3,7 @@ import { BiCircle } from "react-icons/bi";
 import { BsTriangle } from "react-icons/bs";
 import { RxCross1 } from "react-icons/rx";
 
-export const VerdiciInput = (props) => {
+export const VerdiciInput = (props: { register: any }) => {
   const { register } = props;
   return (
     <div className="flex flex-wrap w-1/2 justify-center">

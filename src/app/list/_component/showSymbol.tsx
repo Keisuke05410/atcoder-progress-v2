@@ -2,7 +2,7 @@ import { BiCircle } from "react-icons/bi";
 import { BsTriangle } from "react-icons/bs";
 import { RxCross1 } from "react-icons/rx";
 
-export const showSymbol = (verdici) => {
+export const showSymbol = (verdici: string) => {
   return (
     <div className="flex items-center">
       state :&nbsp;

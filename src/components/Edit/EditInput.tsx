@@ -10,11 +10,11 @@ import CountInput from "../Inputs/CountInput";
 
 import { useRouter } from "next/navigation";
 
-export const EditInput = (props) => {
+export const EditInput = (props: { docSnap: any; setIsOpen: any }) => {
   const { docSnap, setIsOpen } = props;
   const router = useRouter();
   const { register, handleSubmit, reset } = useForm({ defaultValues: docSnap });
-  const handleModalClick = (e) => {
+  const handleModalClick = (e: { stopPropagation: () => void }) => {
     e.stopPropagation();
   };
 

@@ -1,7 +1,7 @@
 import React from "react";
 
-const URLInfoInput = (props) => {
-  const { register, contestAlphabet, contestNumber, taskAlphabet } = props;
+const URLInfoInput = (props: { register: any }) => {
+  const { register } = props;
   return (
     <div className="flex w-full justify-center items-center pt-5">
       <div className="flex space-x-2 relative mr-4 lg:w-full xl:w-1/2 w-2/4 md:w-full text-left">

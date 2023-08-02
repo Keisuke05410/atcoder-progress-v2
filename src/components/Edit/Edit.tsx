@@ -1,7 +1,7 @@
 import React from "react";
 import { EditInput } from "./EditInput";
 
-const Edit = (props) => {
+const Edit = (props: { setIsOpen: any; docSnap: any }) => {
   const { setIsOpen, docSnap } = props;
   return (
     <div className="fixed inset-0 w-full bg-black bg-opacity-50 flex items-center justify-center">

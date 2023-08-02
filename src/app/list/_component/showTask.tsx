@@ -8,12 +8,12 @@ import ShowCode from "./showCode";
 import Edit from "../../../components/Edit/Edit";
 import { useRouter } from "next/navigation";
 
-const ShowTask = (props) => {
+const ShowTask = (props: { id: any; uid: any }) => {
   const { id, uid } = props;
   const router = useRouter();
   const [isOpen, setIsOpen] = useState(false);
   const [docSnap, setDocSnap] = useState(null);
-  const handleOverlayClick = (e) => {
+  const handleOverlayClick = () => {
     setIsOpen(false);
   };
   useEffect(() => {

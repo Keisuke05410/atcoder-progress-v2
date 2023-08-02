@@ -3,7 +3,16 @@ import { BiCircle } from "react-icons/bi";
 import { BsTriangle } from "react-icons/bs";
 import { RxCross1 } from "react-icons/rx";
 
-const ShowCount = (count) => {
+const ShowCount = (count: {
+  [x: string]:
+    | string
+    | number
+    | boolean
+    | React.ReactElement<any, string | React.JSXElementConstructor<any>>
+    | Iterable<React.ReactNode>
+    | React.ReactPortal
+    | React.PromiseLikeOfReactNode;
+}) => {
   return (
     <div className="flex items-center space-x-3 mb-2">
       <div className="flex items-center">
