@@ -1,5 +1,5 @@
 import React from "react";
-import { VerdiciInput } from "../Inputs/VerdiciInput";
+import { VerdiciInput } from "./VerdiciInput";
 import { URLInput } from "../Inputs/URLInput";
 import { CodeInput } from "../Inputs/CodeInput";
 import SelectLanguage from "../Inputs/SelectLanguage";
