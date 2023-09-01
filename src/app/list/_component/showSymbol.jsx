@@ -22,6 +22,6 @@ export const showSymbol = (verdici) => {
   // } else if (verdici === "triangle") {
   //   return <BsTriangle className="text-yellow-500" />;
   // } else if (verdici === "cross") {
-  //   return <RxCross1 className="text-red-500" />;
+  //   return <RxCross1 className="text-red-500" />
   // }
 };
